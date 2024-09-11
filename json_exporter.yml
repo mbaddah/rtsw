@@ -1,0 +1,10 @@
+metrics:
+  - name: kyoto_dst_index
+    path: "[0:]"
+    type: gauge
+    help: "Kyoto Dst Index from NOAA"
+    labels:
+      - "timestamp"
+    values:
+      - "1"
+    timestamp: "0"

@@ -17,12 +17,16 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
     networks:
       - monitoring_network
-  # node_exporter:
-  #   image: prom/node-exporter:latest
-  #   container_name: node_exporter
-  #   restart: always
-  #   ports:
-  #     - "9100:9100"
+  json_exporter:
+    image: prometheuscommunity/json-exporter:latest
+    volumes:
+      - ./json_exporter.yml:/etc/json_exporter/config.yml
+    command:
+      - '--config.file=/etc/json_exporter/config.yml'
+    ports:
+      - "7979:7979"
+    networks:
+      - monitoring_network
 
 networks:
   monitoring_network:
