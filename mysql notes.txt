@@ -1,0 +1,7 @@
+setx DB_HOST "localhost"
+setx DB_USER "root"
+setx DB_PASSWORD "admin"
+setx DB_NAME "kyoto_dst"
+
+C:\Program Files\MySQL\MySQL Server 9.0\bin
+mysql -u your_username -p your_database
