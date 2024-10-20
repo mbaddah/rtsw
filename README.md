@@ -33,11 +33,17 @@ Configure env variables:
 - `docker-compose up --build`
 - `python rtsw.py` (this will be redundant once setup Dockerfile)
 
-# To-do:
+# To-do (initially):
 
 - Load grafana configuration automatically on launch (DB source, dashboard, user setup etc...)
 - Save state of MySql / dst_data DB on teardown
 - Add tests
+
+# To-do (long-term):
+
+- Update infrastructure to scale accordingly
+- Add polling
+- 
 
 # References
 

@@ -1,10 +1,12 @@
-version: '3.8'
+# version: '3.8'
 
 services:
   grafana:
     image: grafana/grafana:latest
     ports:
       - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
     networks:
       - monitoring_network
   prometheus:
@@ -44,4 +46,5 @@ networks:
   monitoring_network:
 
 volumes:
+  grafana_data:
   mysql_data:
