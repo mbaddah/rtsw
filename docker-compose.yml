@@ -32,6 +32,13 @@ services:
 
     networks:
       - monitoring_network
+  
+  rtsw-app:
+    build: .
+    depends_on:
+      - mysql
+    networks:
+      - monitoring_network
 
 networks:
   monitoring_network:

@@ -12,14 +12,16 @@ Initial spike work on following:
 
 # Mysql setup (old needs updating)
 
-- init-db.sql 
+- `init-db.sql` mysql initialisation script.
 
 Configure env variables:
 
+```
 - DB_HOST
 - DB_USER
 - DB_PASSWORD
 - DB_NAME
+```
 
 <!-- # Misc notes: -->
 <!-- - Verify windows exporter running via http://localhost:9182/metrics
@@ -28,7 +30,7 @@ Configure env variables:
 
 # To run
 
-- `docker-compose up`
+- `docker-compose up --build`
 - `python rtsw.py` (this will be redundant once setup Dockerfile)
 
 # To-do:
