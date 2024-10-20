@@ -10,9 +10,8 @@ Initial spike work on following:
 - Display dst https://services.swpc.noaa.gov/products/kyoto-dst.json
 
 
-# Mysql setup
+# Mysql setup (old needs updating)
 
-- Install Mysql client.
 - init-db.sql 
 
 Configure env variables:
@@ -30,7 +29,13 @@ Configure env variables:
 # To run
 
 - `docker-compose up`
-- `python rtsw.py`
+- `python rtsw.py` (this will be redundant once setup Dockerfile)
+
+# To-do:
+
+- Load grafana configuration automatically on launch (DB source, dashboard, user setup etc...)
+- Save state of MySql / dst_data DB on teardown
+- Add tests
 
 # References
 
