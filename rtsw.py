@@ -12,14 +12,16 @@ response = requests.get(url)
 data = response.json()
 
 # Retrieve database connection details from environment variables
-db_host = os.getenv('DB_HOST')
-db_user = os.getenv('DB_USER')
-db_password = os.getenv('DB_PASSWORD')
-db_name = os.getenv('DB_NAME')
+db_host = os.getenv('DB_HOST', 'localhost')
+db_port = os.getenv('DB_PORT', '3306')
+db_user = os.getenv('DB_USER', 'root')
+db_password = os.getenv('DB_PASSWORD', 'password')
+db_name = os.getenv('DB_NAME', 'dst_data')
 
 # Connect to the MySQL database
 db = mysql.connector.connect(
     host=db_host,
+    port=db_port,
     user=db_user,
     password=db_password,
     database=db_name

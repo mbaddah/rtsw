@@ -5,3 +5,16 @@ setx DB_NAME "kyoto_dst"
 
 C:\Program Files\MySQL\MySQL Server 9.0\bin
 mysql -u your_username -p your_database
+
+e.g.
+mysql -u root -p
+
+CREATE DATABASE temp_database;
+
+SHOW DATABASES;
+
+mysql -h localhost -u root -p
+
+To connect to mysql instance within docker network:
+
+mysql -h host.docker.internal -P 3306 -u root -p

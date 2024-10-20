@@ -10,11 +10,27 @@ Initial spike work on following:
 - Display dst https://services.swpc.noaa.gov/products/kyoto-dst.json
 
 
-# Misc notes:
+# Mysql setup
 
-- Verify windows exporter running via http://localhost:9182/metrics
+- Install Mysql client.
+- init-db.sql 
+
+Configure env variables:
+
+- DB_HOST
+- DB_USER
+- DB_PASSWORD
+- DB_NAME
+
+<!-- # Misc notes: -->
+<!-- - Verify windows exporter running via http://localhost:9182/metrics
 - Add datasource using http://host.docker.internal:9090
-- Using https://grafana.com/grafana/dashboards/20763-windows-exporter-dashboard-2024/ 
+- Using https://grafana.com/grafana/dashboards/20763-windows-exporter-dashboard-2024/  -->
+
+# To run
+
+- `docker-compose up`
+- `python rtsw.py`
 
 # References
 
