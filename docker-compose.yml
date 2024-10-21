@@ -17,16 +17,24 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
     networks:
       - monitoring_network
-  json_exporter:
-    image: prometheuscommunity/json-exporter:latest
-    volumes:
-      - ./json_exporter.yml:/etc/json_exporter/config.yml
-    command:
-      - '--config.file=/etc/json_exporter/config.yml'
+  mysql:
+    image: mysql:latest
+    # environment:
+      # MYSQL_ROOT_PASSWORD: password
+      # MYSQL_DATABASE: grafana
+      # MYSQL_USER: grafana
+      # MYSQL_PASSWORD: password
     ports:
-      - "7979:7979"
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+
     networks:
       - monitoring_network
 
 networks:
   monitoring_network:
+
+volumes:
+  mysql_data:
