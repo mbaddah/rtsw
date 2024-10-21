@@ -1,6 +1,22 @@
 # version: '3.8'
 
 services:
+  rtsw-app:
+    build: .
+    container_name: rtsw_app
+    environment:
+      - PYTHONPATH=/app
+      - MYSQL_HOST=db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_DB=dst_data
+    depends_on:
+      - db
+    volumes:
+      - ./app:/app
+    networks:
+      - monitoring_network
+
   grafana:
     image: grafana/grafana:latest
     ports:
@@ -9,6 +25,7 @@ services:
       - grafana_data:/var/lib/grafana
     networks:
       - monitoring_network
+
   prometheus:
     image: prom/prometheus:latest
     ports:
@@ -19,32 +36,25 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
     networks:
       - monitoring_network
-  mysql:
+
+  db:
     image: mysql:latest
-    # environment:
-      # MYSQL_ROOT_PASSWORD: password
-      # MYSQL_DATABASE: grafana
-      # MYSQL_USER: grafana
-      # MYSQL_PASSWORD: password
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: dst_data
     ports:
       - "3306:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - db_data:/var/lib/mysql
       - ./app/utils/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
-
     networks:
       - monitoring_network
   
-  rtsw-app:
-    build: .
-    depends_on:
-      - mysql
-    networks:
-      - monitoring_network
-
 networks:
   monitoring_network:
 
 volumes:
   grafana_data:
-  mysql_data:
+  db_data:
+  app:

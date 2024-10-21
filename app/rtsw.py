@@ -1,6 +1,6 @@
-from app.utils.db import get_db_connection
-from app.utils.fetch_data import fetch_solar_wind_data
-from datatime import datatime
+from utils.db import get_db_connection
+from utils.fetch_data import fetch_solar_wind_data
+from datetime import datetime
 
 def main():
     url = "https://services.swpc.noaa.gov/products/solar-wind/mag-2-hour.json"
@@ -8,20 +8,6 @@ def main():
 
     db = get_db_connection()
     cursor = db.cursor()
-
-    # Move this to init-db.sql ?
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS solar_wind (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        time_tag DATETIME,
-        bx_gsm FLOAT,
-        by_gsm FLOAT,
-        bz_gsm FLOAT,
-        lon_gsm FLOAT,
-        lat_gsm FLOAT,
-        bt FLOAT
-    )
-    """)
 
     for entry in data[1:]:
         time_str = entry[0]
