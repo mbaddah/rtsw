@@ -8,11 +8,3 @@ scrape_configs:
 
     static_configs:
       - targets: ['localhost:9090']
-
-  - job_name: 'kyoto_dst'
-    metrics_path: /probe
-    params:
-      module: [kyoto_dst]
-      target: [https://services.swpc.noaa.gov/products/kyoto-dst.json]
-    static_configs:
-      - targets: ['localhost:7979']
