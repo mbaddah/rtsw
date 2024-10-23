@@ -14,7 +14,7 @@ data = response.json()
 # Retrieve database connection details from environment variables
 db_user = os.getenv('DB_USER', 'root')
 db_password = os.getenv('DB_PASSWORD', 'password')
-db_host = os.getenv('DB_HOST', 'localhost')
+db_host = os.getenv('DB_HOST', 'mysql')
 db_port = os.getenv('DB_PORT', '3306')
 db_name = os.getenv('DB_NAME', 'dst_data')
 
