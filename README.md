@@ -43,7 +43,7 @@ Configure env variables:
 
 - Update infrastructure to scale accordingly
 - Add polling
-- 
+- add event driven alerts
 
 # References
 
